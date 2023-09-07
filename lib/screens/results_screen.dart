@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:gosurvey/screens/question3_screen.dart'; // Importe a tela 3
 import 'package:fl_chart/fl_chart.dart';
-
 class ResultsScreen extends StatefulWidget {
   @override
   _ResultsScreenState createState() => _ResultsScreenState();
@@ -10,7 +10,8 @@ class ResultsScreen extends StatefulWidget {
 class _ResultsScreenState extends State<ResultsScreen> {
   String question1Response = '';
   String question2Response = '';
-  bool question3Response = false;
+  int question3Response = -1; // Alterado para um inteiro
+  bool isCompleted = false; // Para controlar se a seleção foi concluída
 
   int satisfiedCount = 0;
   int goodCount = 0;
@@ -36,7 +37,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
     setState(() {
       question1Response = prefs.getString('question1') ?? 'No response';
       question2Response = prefs.getString('question2') ?? 'No response';
-      question3Response = prefs.getBool('question3') ?? false;
+      question3Response = prefs.getInt('question3') ?? -1; // Alterado para buscar um inteiro
     });
 
     // Chame a função para calcular as contagens com base nas respostas existentes
@@ -89,7 +90,8 @@ class _ResultsScreenState extends State<ResultsScreen> {
         break;
     }
 
-    if (question3Response) {
+    if (question3Response >= 0) {
+      // Verifica se a resposta da tela 3 é válida (>= 0)
       yesCount++;
     } else {
       noCount++;
@@ -141,7 +143,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                             value: goodCount.toDouble(),
                             title: 'Good',
                           ),
-                          PieChartSectionData(
+                                                    PieChartSectionData(
                             color: Colors.yellow,
                             value: okayCount.toDouble(),
                             title: 'Okay',
@@ -205,7 +207,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
               ),
               Column(
                 children: [
-                  Text('Question 3 Response: $question3Response'),
+                  Text('Question 3 Response: ${question3Response >= 0 ? 'Yes' : 'No'}'), // Exibe 'Yes' se question3Response for >= 0, caso contrário, 'No'
                   SizedBox(height: 20),
                   Column(
                     children: [

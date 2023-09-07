@@ -46,7 +46,8 @@ class _Question3ScreenState extends State<Question3Screen> {
 
           return GestureDetector(
             onTap: () async {
-              await saveResultsToSharedPreferences('question3', rating.toDouble());
+              // Salva a resposta da pergunta 3 no SharedPreferences
+              await saveResultsToSharedPreferences('question3', rating);
               setState(() {
                 selectedRating = rating; // Atualize a seleção ao tocar
                 isCompleted = true; // A seleção foi concluída
@@ -133,8 +134,8 @@ class _Question3ScreenState extends State<Question3Screen> {
   }
 
   // Função para salvar os resultados no SharedPreferences
-  Future<void> saveResultsToSharedPreferences(String key, double value) async {
+  Future<void> saveResultsToSharedPreferences(String key, int value) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setDouble(key, value);
+    await prefs.setInt(key, value);
   }
 }
