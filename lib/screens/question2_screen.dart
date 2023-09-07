@@ -15,13 +15,16 @@ class Question2Screen extends StatelessWidget {
           children: <Widget>[
             Text('How would you rate the quality of our product?'),
             SizedBox(height: 20),
-            buildResponseButton(context, 'Excellent', Colors.green, '👍'),
-            SizedBox(height: 10), // Espaço vertical entre os botões
-            buildResponseButton(context, 'Good', Colors.blue, '🙂'),
-            SizedBox(height: 10), // Espaço vertical entre os botões
-            buildResponseButton(context, 'Fair', Colors.yellow, '😐'),
-            SizedBox(height: 10), // Espaço vertical entre os botões
-            buildResponseButton(context, 'Poor', Colors.red, '👎'),
+            Wrap(
+              spacing: 10, // Espaçamento horizontal entre os botões
+              runSpacing: 10, // Espaçamento vertical entre os botões
+              children: [
+                buildResponseButton(context, 'Excellent', Colors.green, '👍'),
+                buildResponseButton(context, 'Good', Colors.blue, '🙂'),
+                buildResponseButton(context, 'Fair', Colors.yellow, '😐'),
+                buildResponseButton(context, 'Poor', Colors.red, '👎'),
+              ],
+            ),
           ],
         ),
       ),
@@ -30,7 +33,7 @@ class Question2Screen extends StatelessWidget {
 
   Widget buildResponseButton(BuildContext context, String response, Color color, String emoji) {
     return SizedBox(
-      width: 200, // Largura desejada para o botão
+      width: 120, // Largura desejada para o botão
       height: 60, // Altura desejada para o botão
       child: ElevatedButton(
         onPressed: () async {

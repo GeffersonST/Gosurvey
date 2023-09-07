@@ -15,13 +15,16 @@ class Question1Screen extends StatelessWidget {
           children: <Widget>[
             Text('How satisfied are you with our service?'),
             SizedBox(height: 20),
-            buildResponseButton(context, 'Satisfied', Colors.green, '😄'),
-            SizedBox(height: 10), // Espaço vertical entre os botões
-            buildResponseButton(context, 'Good', Colors.blue, '😃'),
-            SizedBox(height: 10), // Espaço vertical entre os botões
-            buildResponseButton(context, 'Okay', Colors.yellow, '😐'),
-            SizedBox(height: 10), // Espaço vertical entre os botões
-            buildResponseButton(context, 'Not Satisfied', Colors.red, '😞'),
+            Wrap(
+              spacing: 10, // Espaçamento horizontal entre os botões
+              runSpacing: 10, // Espaçamento vertical entre os botões
+              children: [
+                buildResponseButton(context, 'Satisfied', Colors.green, '😄'),
+                buildResponseButton(context, 'Good', Colors.blue, '😃'),
+                buildResponseButton(context, 'Okay', Colors.yellow, '😐'),
+                buildResponseButton(context, 'Not Satisfied', Colors.red, '😞'),
+              ],
+            ),
           ],
         ),
       ),
@@ -30,7 +33,7 @@ class Question1Screen extends StatelessWidget {
 
   Widget buildResponseButton(BuildContext context, String response, Color color, String emoji) {
     return SizedBox(
-      width: 200, // Largura desejada para o botão
+      width: 120, // Largura desejada para o botão
       height: 60, // Altura desejada para o botão
       child: ElevatedButton(
         onPressed: () async {

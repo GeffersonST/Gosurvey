@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gosurvey/screens/results_screen.dart';
+import 'package:gosurvey/screens/thank_you_screen.dart'; // Importe a tela de agradecimento
 
 class Question3Screen extends StatefulWidget {
   @override
@@ -123,7 +124,7 @@ class _Question3ScreenState extends State<Question3Screen> {
         onPressed: () {
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => ResultsScreen()),
+            MaterialPageRoute(builder: (context) => ThankYouScreen()), // Navegue para a tela de agradecimento
           );
         },
         child: Text('Finalizar'),

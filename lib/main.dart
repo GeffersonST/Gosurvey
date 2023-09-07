@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gosurvey/screens/welcome_screen.dart';
-import 'package:gosurvey/database_helper.dart'; // Importe o seu DatabaseHelper aqui
+import 'package:gosurvey/database_helper.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple),
       ),
       home: WelcomeScreen(),
+      debugShowCheckedModeBanner: false, // Remova o banner de "Debug"
     );
   }
 }

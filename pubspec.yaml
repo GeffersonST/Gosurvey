@@ -33,7 +33,7 @@ dependencies:
   shared_preferences: ^2.0.12 # Verifique a versão mais recente no site pub.dev
   fl_chart: ^0.41.0 # Verifique a versão mais recente no site pub.dev
   sqflite: ^2.3.0
-
+  get: ^4.3.8
 
 
   # The following adds the Cupertino Icons font to your application.

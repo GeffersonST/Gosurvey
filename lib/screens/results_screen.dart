@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:gosurvey/screens/question3_screen.dart'; // Importe a tela 3
 import 'package:fl_chart/fl_chart.dart';
+
 class ResultsScreen extends StatefulWidget {
   @override
   _ResultsScreenState createState() => _ResultsScreenState();
@@ -124,6 +125,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text('Question 1 Response: $question1Response'),
+              Text('Total Responses for Question 1: ${satisfiedCount + goodCount + okayCount + notSatisfiedCount}'),
               SizedBox(height: 20),
               Column(
                 children: [
@@ -143,7 +145,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
                             value: goodCount.toDouble(),
                             title: 'Good',
                           ),
-                                                    PieChartSectionData(
+                          PieChartSectionData(
                             color: Colors.yellow,
                             value: okayCount.toDouble(),
                             title: 'Okay',
@@ -165,6 +167,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
               Column(
                 children: [
                   Text('Question 2 Response: $question2Response'),
+                  Text('Total Responses for Question 2: ${excellentCount + goodProductCount + fairCount + poorCount}'),
                   SizedBox(height: 20),
                   Column(
                     children: [
@@ -208,6 +211,7 @@ class _ResultsScreenState extends State<ResultsScreen> {
               Column(
                 children: [
                   Text('Question 3 Response: ${question3Response >= 0 ? 'Yes' : 'No'}'), // Exibe 'Yes' se question3Response for >= 0, caso contrário, 'No'
+                  Text('Total Responses for Question 3: ${yesCount + noCount}'),
                   SizedBox(height: 20),
                   Column(
                     children: [
